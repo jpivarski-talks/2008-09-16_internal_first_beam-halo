@@ -1,0 +1,141 @@
+\documentclass[compress]{beamer}
+\usepackage{ifthen,verbatim}
+
+\newcommand{\isnote}{}
+\xdefinecolor{lightyellow}{rgb}{1.,1.,0.25}
+\xdefinecolor{darkblue}{rgb}{0.1,0.1,0.7}
+
+%% Uncomment this to get annotations
+%% \def\notes{\addtocounter{page}{-1}
+%%            \renewcommand{\isnote}{*}
+%% 	   \beamertemplateshadingbackground{lightyellow}{white}
+%%            \begin{frame}
+%%            \frametitle{Notes for the previous page (page \insertpagenumber)}
+%%            \itemize}
+%% \def\endnotes{\enditemize
+%% 	      \end{frame}
+%%               \beamertemplateshadingbackground{white}{white}
+%%               \renewcommand{\isnote}{}}
+
+%% Uncomment this to not get annotations
+\def\notes{\comment}
+\def\endnotes{\endcomment}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{\mbox{ } \hfill
+\begin{minipage}{5.5 cm}
+\vspace{-0.75 cm} \small
+\end{minipage} \hfill
+\begin{minipage}{4.5 cm}
+\vspace{-0.75 cm} \small
+\begin{flushright}
+\ifthenelse{\equal{\insertpagenumber}{1}}{}{Jim Pivarski \hspace{0.2 cm} \insertpagenumber\isnote/\pageref{numpages}}
+\end{flushright}
+\end{minipage}\mbox{\hspace{0.2 cm}}\includegraphics[height=1 cm]{../cmslogo} \hspace{0.1 cm} \includegraphics[height=1 cm]{../tamulogo} \hspace{0.01 cm} \vspace{-1.05 cm}}
+
+\begin{document}
+\begin{frame}
+\vfill
+\begin{center}
+\textcolor{darkblue}{\Large First look at new beam-halo data}
+
+\vfill
+\begin{columns}
+\column{0.3\linewidth}
+\begin{center}
+\large
+\textcolor{darkblue}{Jim Pivarski}
+
+\vspace{0.2 cm}
+Alexei Safonov
+\end{center}
+
+\column{0.3\linewidth}
+\begin{center}
+\large
+K\'aroly Banicz
+\end{center}
+\end{columns}
+
+\begin{columns}
+\column{0.3\linewidth}
+\begin{center}
+\scriptsize
+{\it Texas A\&M University}
+\end{center}
+\column{0.3\linewidth}
+\begin{center}
+\scriptsize
+{\it US-CMS}
+\end{center}
+\end{columns}
+
+\vfill
+16 September, 2008
+
+\end{center}
+\end{frame}
+
+%% \begin{notes}
+%% \item This is the annotated version of my talk.
+%% \item If you want the version that I am presenting, download the one
+%% labeled ``slides'' on Indico (or just ignore these yellow pages).
+%% \item The annotated version is provided for extra detail and a written
+%% record of comments that I intend to make orally.
+%% \item Yellow notes refer to the content on the {\it previous} page.
+%% \item All other slides are identical for the two versions.
+%% \end{notes}
+
+\begin{frame}
+\frametitle{Summary (sorry, no plots)}
+\begin{itemize}\setlength{\itemsep}{0.25 cm}
+\item Data taken Sep 10--12, mostly all in one good run (62232
+  9-minute fill), but 62296 and 62311 also substantial
+\item Few complete ($>$ few hundred hits per chamber) rings in whole
+  dataset: ME+2/1, +3/2, -2/1, -2/2, -3/1
+\item In 62232, only ME+2/1, -2/1, and -3/1
+\end{itemize}
+
+\vfill
+\hspace{-0.83 cm} \textcolor{darkblue}{\Large Closure problems}
+\vspace{0.2 cm}
+\begin{itemize}\setlength{\itemsep}{0.25 cm}
+\item ``Closure'' = $\displaystyle \sum_{\mbox{\scriptsize chambers}} \mbox{residuals mean}$ (indep.\ of misalignment)
+\item \mbox{MC: ME+2/1, +2/2, +3/1, +3/2, $-$2/1, $-$2/2, $-$3/1, $-$3/2: \hspace{-1 cm}} \\
+-0.14, -0.62, 0.09, 0.07, 0.01, -0.08, -0.03, -0.22~cm (inc)
+\item \mbox{Cosmic rays: ME+2/1, +2/2, +3/2: -1.13, 0.63, 0.31~cm (inc) \hspace{-1 cm}}
+\item Beam-halo: ME+2/1, $-$2/1, $-$3/1: \\
+-1.01, 4.25, -3.74~cm (inc) and 2.00, -4.47, 3.92 (dec) \\
+%% -1.01, 4.25, -3.74~cm (wmean increasing) \\
+%% 2.00, -4.47, 3.92 (wmean decreasing) \\
+%% -1.34, 4.45, -4.20 (fit increasing) \\
+%% 2.31, -4.02, 3.76 (fit decreasing) \\
+\end{itemize}
+
+\end{frame}
+
+%% \section*{First section}
+%% \begin{frame}
+%% \begin{center}
+%% \Huge \textcolor{blue}{First section}
+%% \end{center}
+%% \end{frame}
+
+\begin{frame}
+\label{numpages}
+\begin{itemize}\setlength{\itemsep}{0.35 cm}
+\item If anything, prompt AlCaReco is too prompt!  \\ We had the Sep 12 data on Sep 12!
+\item The ``15 broken CSC chambers'' people talk about could mean that
+  alignment procedure is only fully applicable (with closure
+  cross-check) on a few rings
+\item But some chambers came back on later runs: we just need a lot of
+  data on a day when the chambers are healthy
+\item Closure problems are now seen in data only, {\it not} MC, so
+  that should be a strong clue to the solution of the problem (and we
+  might diagnose a problem with the detector, beyond alignment)
+\item Are the residuals distributions double-peaked or something
+  pathological like that?  I still need to check.
+\end{itemize}
+\end{frame}
+
+\end{document}
